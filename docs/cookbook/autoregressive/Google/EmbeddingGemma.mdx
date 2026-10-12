@@ -4,7 +4,6 @@ description: Serve Google's EmbeddingGemma text embedding model with SGLang.
 tag: NEW
 ---
 
-
 ## Overview
 
 [EmbeddingGemma](https://huggingface.co/google/embeddinggemma-300m) is Google's 300M-parameter text embedding model. SGLang detects its bidirectional Gemma 3 encoder, applies normalized mean pooling, and serves embeddings through the OpenAI-compatible `/v1/embeddings` endpoint.
@@ -63,7 +62,12 @@ embedding requests, so do not add a separate tokenizer batching flag.
 On Intel Arc Pro B-Series GPUs (BMG), serve EmbeddingGemma on XPU with a
 single GPU:
 
-<EmbeddingGemmaDeployment />
+```bash
+sglang serve \
+  --model-path google/embeddinggemma-300m \
+  --device xpu \
+  --host 0.0.0.0
+```
 
 ## Create embeddings
 
